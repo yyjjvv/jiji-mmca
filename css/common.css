@@ -1,0 +1,276 @@
+@charset "utf-8";
+/*Reset & Initial Setting*/
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+img {
+	max-width: 100%;
+}
+.hide {
+	width: 0;
+	height: 0;
+	line-height: 0;
+	text-indent: -9999px;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+}
+body {
+	font-family: "Alegreya Sans", sans-serif;
+	font-size: 16px;
+	color: #333;
+}
+.kr {
+	font-family: "Noto Sans KR", sans-serif;
+}
+#container {
+	width: 100%;
+	height: 100vh;
+	min-width: 1200px;
+	background: #fff;
+	display: flex;
+}
+
+/*Header*/
+#container #header {
+	width: 20%;
+	height: 100%;
+	position: relative;
+	padding: 10vh 3vw;
+	z-index: 3;
+}
+#container #header h1 {
+	width: 100%;
+}
+#container #nav {
+	position: absolute;
+	top: 10vh;
+	right: 3vw;
+	z-index: 3;
+	font-family: "Alegreya Sans", sans-serif;
+}
+#container #nav > ul {
+	display: flex;
+}
+#container #nav > ul > li {
+	font-size: 18px;
+	color: #333;
+	margin-left: 15px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+#container #nav .language {
+	position: relative;
+}
+#container #nav .language i {
+	font-size: 16px;
+	transition: transform 0.4s;
+}
+#container #nav .language .select {
+	background: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	text-align: center;
+	margin-top: 5px;
+	display: none;
+}
+#container #nav .language .select a {
+	font-size: 16px;
+	color: #fff;
+	padding: 10px 48px;
+	display: inline-block;
+}
+#container #nav .language.active .select {
+	display: block;
+}
+#container #nav .language.active i {
+	transform: rotate(180deg);
+}
+
+/*Contents Area*/
+#container #main {
+	width: 80%;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	padding-top: 15vh;
+}
+#container #main section {
+	flex: 1;
+	padding: 70px 40px 100px;
+	position: relative;
+	opacity: 0.6;
+	transition: opacity 1s, flex 1s;
+	cursor: pointer;
+}
+#container #main section::before {
+	content: "";
+	display: block;
+	width: 80%;
+	height: 90%;
+	position: absolute;
+	left: -200%;
+	top: 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	opacity: 0;
+	transition: 0.5s;
+	background: #fcfcfc;
+}
+#container #main section:first-of-type {
+	z-index: 4;
+}
+#container #main section:nth-of-type(2) {
+	z-index: 3;
+}
+#container #main section:nth-of-type(3) {
+	z-index: 2;
+}
+
+#container #main section .inner {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	position: relative;
+}
+#container #main section .inner .txt {
+	width: 100%;
+	transition: 0.5s;
+	height: 40vh;
+	overflow-y: hidden;
+}
+#container #main section .inner .txt strong {
+	font-family: "Alegreya Sans", sans-serif;
+	font-size: 3vw;
+	line-height: 1;
+	position: relative;
+	font-weight: 100;
+	margin-bottom: 40px;
+	transition: 1s;
+	padding-top: 40px;
+	width: fit-content;
+	display: block;
+	color: #555;
+}
+#container #main section .inner .txt strong::after {
+	content: "";
+	display: block;
+	width: 50px;
+	height: 2px;
+	background: #999;
+	transition: 1.5s;
+	margin-top: 20px;
+}
+#container #main section .inner .txt .tit {
+	font-size: 1.5vw;
+	margin-bottom: 10px;
+}
+#container #main section .inner .txt p {
+	color: #777;
+	text-indent:10px;
+	line-height:1.5;
+}
+#container #main section .inner figure {
+	width: 100%;
+	height: 25vh;
+	margin-top:10px;
+	background: #777;
+	overflow: hidden;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+	transform-origin: left center;
+	transition: 1s;
+}
+#container #main section .inner figure img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#container #main section:hover {
+	flex: 1.5;
+	opacity: 1;
+	z-index: 5;
+}
+#container #main section:hover::before {
+	left: 0;
+	opacity: 1;
+}
+#container #main section:hover .inner .txt {
+	width: 80%;
+}
+#container #main section:hover .inner .txt strong {
+	font-size: 5vw;
+	padding-top: 0;
+}
+#container #main section:hover .inner .txt strong::after {
+	width: 150%;
+	background: #f44336;
+}
+#container #main section:hover .inner figure {
+	filter: saturate(120%);
+	transform: translateY(3vh);
+}
+
+/*Aside Contents*/
+#container aside {
+	background: #fcfcfc;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	opacity: 0;
+	z-index: 2;
+	padding: 20vh 14vw 15vh 20vw;
+	display: flex;
+	justify-content: space-between;
+	transition: 1s;
+}
+#container aside.on {
+	left: 0%;
+	opacity: 1;
+}
+#container aside .txt {
+	width: 40%;
+	height: 100%;
+}
+#container aside .txt h2 {
+	font-size: 3vw;
+	color: #333;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: 100;
+}
+#container aside .txt p {
+	margin-bottom: 60px;
+	color: #555;
+	text-indent:15px;
+	line-height:1.5;
+}
+#container aside .txt .btn_close {
+	color: #f44336;
+	cursor: pointer;
+}
+#container aside figure {
+	width: 50%;
+}
+
+/*Footer*/
+#footer {
+	position: fixed;
+	left: 3vw;
+	bottom: 3vh;
+	font-family: "Alegreya Sans", sans-serif;
+}
